@@ -1,3 +1,6 @@
+import { GlobalFooter } from '../components/GlobalFooter';
+import { GlobalHeader } from '../components/GlobalHeader';
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ja">
@@ -6,7 +9,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        <GlobalHeader />
+        <main>{children}</main>
+        <GlobalFooter />
+      </body>
     </html>
   );
 };
