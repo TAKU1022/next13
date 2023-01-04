@@ -1,15 +1,14 @@
 import { FC, use } from 'react';
 import { PostType } from '../types';
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const fetchPosts = async (): Promise<PostType[]> => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
     cache: 'no-store',
   });
-  return response
-    .json()
-    .then(
-      (data) => new Promise((resolve) => setTimeout(() => resolve(data), 2000))
-    );
+  await sleep(2500);
+  return response.json();
 };
 
 export const PostList: FC = () => {
